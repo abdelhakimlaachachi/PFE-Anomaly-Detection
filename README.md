@@ -18,7 +18,7 @@ The project is structured as follows:
 * `model_training.py`: Script dedicated to training and fine-tuning the detection models.
 * `requirements.txt`: List of dependencies and Python libraries required for the project.
 * `workflows/n8n_alert_workflow.json`: Exported n8n workflow file for the automated alerting system.
-* `dataset_pose/`, `models/``: Folders containing training data, saved models.
+* `dataset_pose/`, `models/`: Folders containing training data, saved models.
 * `assets/`: Folder containing project screenshots.
 
 ## 🔔 Alert System Integration (n8n)
