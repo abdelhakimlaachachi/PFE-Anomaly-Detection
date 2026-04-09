@@ -5,22 +5,32 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# --- Données et Vidéos (Trop lourds pour GitHub) ---
-dataset_pose/
+# --- Dataset: keep only npy files ---
+dataset_pose/*         # ignore tout
+!dataset_pose/*.npy    # sauf les npy à la racine
+!dataset_pose/normal/*.npy   # sauf npy dans normal
+!dataset_pose/anomalie/*.npy # sauf npy dans anomalie
+
+# --- Models: keep only model.keras and JSON ---
+models/*
+!models/model.keras
+!models/*.json
+
+# --- Workflows ---
+workflows/*                    # ignore tout
+!workflows/n8n_alert_workflow.json  # sauf ce fichier JSON
+
+# --- Videos and large files ---
 testing_videos/
 anomalies_sauvegardees/
 *.mp4
 *.avi
 *.mov
-models/*.txt
-models/*.png
 
-# --- Modèles et Poids (Fichiers binaires) ---
-*.keras
+# --- Other model weights ---
 *.h5
 *.pt
-*.npy
 
-# --- Logs et divers ---
+# --- Logs and misc ---
 *.log
-.DS_Store
+*.DS_Store

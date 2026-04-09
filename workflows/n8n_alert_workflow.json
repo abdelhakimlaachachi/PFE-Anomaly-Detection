@@ -1,0 +1,111 @@
+{
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "1",
+        "name": "Webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [100, 300]
+      },
+      {
+        "parameters": {
+          "jsCode": "// Traitement des données reçues"
+        },
+        "id": "2",
+        "name": "Code in JavaScript",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 1,
+        "position": [300, 300]
+      },
+      {
+        "parameters": {},
+        "id": "3",
+        "name": "Analyze video",
+        "type": "n8n-nodes-base.googleGemini",
+        "typeVersion": 1,
+        "position": [500, 150]
+      },
+      {
+        "parameters": {
+          "mode": "combine"
+        },
+        "id": "4",
+        "name": "Merge",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 1,
+        "position": [550, 450]
+      },
+      {
+        "parameters": {
+          "toEmail": "exemple@gmail.com"
+        },
+        "id": "5",
+        "name": "Send email",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 1,
+        "position": [800, 200]
+      },
+      {
+        "parameters": {
+          "chatId": "123456"
+        },
+        "id": "6",
+        "name": "Send a video",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1,
+        "position": [800, 500]
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "Analyze video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Analyze video": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "node": "Send email",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Send a video",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    }
+  }
